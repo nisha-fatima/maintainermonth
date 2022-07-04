@@ -1,0 +1,30 @@
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 10px;
+
+  height: spacing(7);
+  padding: 0 spacing(3);
+
+  @extend %body-1;
+
+  @extend %background-filter-white;
+  border-radius: 131px;
+
+  transition: color $simple-fade, background $simple-fade;
+
+  .icon-arrow-right path {
+    fill: $white;
+
+    transition: fill $simple-fade;
+  }
+
+  &:hover {
+    background: $white;
+    color: $purple;
+
+    .icon-arrow-right path {
+      fill: $purple;
+    }
+  }
+}

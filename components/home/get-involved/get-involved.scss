@@ -1,0 +1,158 @@
+.get-involved {
+  min-height: calc((var(--vh, 1vh) * 100) - $header-height);
+
+  padding-top: $module-divider-md;
+  padding-bottom: $module-divider-md;
+
+  @media (min-width: $md) {
+    padding-top: $module-divider-lg;
+    padding-bottom: $module-divider-lg;
+  }
+
+  &__header {
+    @extend %grid;
+  }
+
+  &__title {
+    padding-left: spacing(5);
+    margin-bottom: spacing(5);
+
+    grid-column: 1 / 5;
+
+    @extend %header-1;
+
+    @media (min-width: $md) {
+      padding-left: 0;
+
+      grid-column: 2 / 8;
+
+      font-size: 2.25rem;
+    }
+
+    @media (min-width: $lg) {
+      margin-bottom: 0;
+
+      grid-column: 3 / 7;
+    }
+  }
+
+  &__text {
+    padding-left: spacing(5);
+
+    @extend %body-1;
+    color: $white-80;
+
+    grid-column: 1 / 5;
+
+    @media (min-width: $md) {
+      padding-left: 0;
+
+      grid-column: 2 / 8;
+    }
+
+    @media (min-width: $lg) {
+      grid-column: 7 / 11;
+    }
+
+    p {
+      margin-bottom: spacing(2);
+    }
+  }
+
+  &__examples {
+    padding-left: spacing(5);
+    margin-top: $module-divider-md;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @media (min-width: $md) {
+      padding-left: 0;
+      margin-top: $module-divider-lg;
+    }
+  }
+
+  &__list {
+    @extend %grid;
+    row-gap: spacing(4);
+  }
+
+  &__list-content {
+    display: flex;
+    flex-direction: column;
+
+    grid-column: 1 / 5;
+
+    @media (min-width: $md) {
+      grid-column: 2 / 8;
+    }
+
+    @media (min-width: $lg) {
+      grid-column: 4 / 11;
+    }
+  }
+
+  &__image {
+    flex: 0 0 160px;
+    height: 160px;
+    width: 160px;
+    display: block;
+
+    @media (min-width: $md) {
+      flex: 0 0 200px;
+      height: 200px;
+      width: 200px;
+    }
+
+    @media (min-width: $lg) {
+      flex: 0 0 300px;
+      height: 300px;
+      width: 300px;
+    }
+  }
+
+  &__example {
+    padding: spacing(2);
+    grid-column: 1 / 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: spacing(1);
+
+    @extend %header-3;
+    text-align: center;
+
+    transition: transform 1s $bezier-default;
+
+    &:not(:last-child) {
+      margin-bottom: spacing(1);
+    }
+
+    @media (min-width: $md) {
+      grid-column: 2 / 8;
+      flex-direction: row;
+      column-gap: spacing(5);
+
+      text-align: left;
+    }
+
+    @media (min-width: $lg) {
+      text-align: left;
+
+      &:nth-child(odd) {
+        grid-column: 4 / 11;
+      }
+
+      &:nth-child(even) {
+        grid-column: 6 / 12;
+      }
+    }
+
+    p {
+      flex: 1;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.events {
+  min-height: calc((var(--vh, 1vh) * 100) - $header-height);
+
+  padding-top: $module-divider-md;
+
+  @media (min-width: $md) {
+    padding-top: $module-divider-lg;
+  }
+
+  &__content {
+    padding-bottom: $module-divider-md;
+
+    @media (min-width: $md) {
+      padding-bottom: $module-divider-lg;
+    }
+  }
+
+  &__list {
+    margin-left: spacing(5);
+
+    display: flex;
+    flex-direction: column;
+    row-gap: $module-divider-md;
+
+    @media (min-width: $lg) {
+      margin-left: 0;
+    }
+
+    @media (min-width: $lg) {
+      row-gap: 0;
+    }
+  }
+}

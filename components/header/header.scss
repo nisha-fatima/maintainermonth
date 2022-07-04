@@ -1,0 +1,160 @@
+.header {
+  position: sticky;
+  top: 0;
+
+  padding: 0 spacing(2);
+
+  background: linear-gradient(
+    180deg,
+    rgba(107, 0, 207, 0.4) 0%,
+    rgba(107, 0, 207, 0) 100%
+  );
+
+  z-index: $index-header;
+
+  @media (min-width: $lg) {
+    padding: 0 spacing(4);
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    padding: spacing(2.5) 0 spacing(2);
+
+    @media (min-width: $lg) {
+      padding: spacing(2) 0;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    column-gap: spacing(2);
+  }
+
+  &__home-link {
+    display: flex;
+    align-items: center;
+    column-gap: spacing(1);
+
+    @extend %header-5;
+
+    @media (min-width: $md) {
+      column-gap: spacing(2);
+    }
+
+    .github-logo {
+      height: spacing(3);
+      width: spacing(3);
+
+      @media (min-width: $sm) {
+        height: spacing(4);
+        width: spacing(4);
+      }
+
+      path {
+        fill: $white;
+      }
+    }
+  }
+
+  &__chip {
+    padding: spacing(1) spacing(1.5);
+    margin-right: spacing(2);
+
+    background: $white;
+    box-sizing: border-box;
+    border-radius: 27px;
+
+    @extend %subtitle-1;
+    color: $purple;
+
+    cursor: default;
+
+    transition: transform $simple-fade;
+
+    &.hide {
+      transform: translateY(-200%);
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    column-gap: spacing(1);
+
+    @media (min-width: $md) {
+      column-gap: spacing(2);
+    }
+
+    @media (min-width: $lg) {
+      column-gap: spacing(4);
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: spacing(1);
+
+    height: spacing(5);
+    width: spacing(5);
+
+    @extend %background-filter-white;
+    border-radius: 155px;
+
+    transition: background $simple-fade, color $simple-fade;
+
+    @media (min-width: $lg) {
+      width: auto;
+      padding: 0 spacing(2);
+    }
+
+    &.is-active {
+      background: $white-40;
+
+      color: $white;
+
+      .icon-calendar,
+      .icon-books {
+        path {
+          fill: $white;
+        }
+      }
+    }
+
+    &:hover {
+      background: $white;
+      color: $purple;
+
+      .icon-calendar,
+      .icon-books {
+        path {
+          fill: $purple;
+        }
+      }
+    }
+  }
+
+  .icon-calendar,
+  .icon-books {
+    path {
+      fill: $white;
+      transition: fill $simple-fade;
+    }
+  }
+
+  &__link-text {
+    display: none;
+
+    @media (min-width: $lg) {
+      display: initial;
+    }
+  }
+}

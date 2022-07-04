@@ -1,0 +1,253 @@
+.event-detail {
+  $self: &;
+
+  @extend %grid;
+
+  position: relative;
+
+  &__user {
+    margin-bottom: spacing(2);
+    display: block;
+
+    font-family: $inter;
+    font-weight: $regular;
+    font-size: 1.25rem;
+    line-height: 1.4;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    @extend %header-1;
+
+    &[href]::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    @media (min-width: $md) {
+      font-size: 1.375rem;
+      line-height: 1.6;
+    }
+
+    @media (min-width: $xl) {
+      font-size: 3rem;
+      line-height: 1.5;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: spacing(4);
+
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+
+    grid-column: 1 / 5;
+
+    @media (min-width: $md) {
+      grid-column: 2 / 7;
+    }
+
+    @media (min-width: $lg) {
+      grid-column: 3 / 9;
+    }
+
+    a {
+      z-index: $index-event-link;
+    }
+  }
+
+  &.full-page &__info {
+    justify-content: flex-start;
+
+    @media (min-width: $md) {
+      grid-column: 3 / 8;
+    }
+  }
+
+  &:not(.full-page) #{ $self }__info {
+      padding: spacing(3);
+      position: relative;
+      aspect-ratio: 1 / 1;
+
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        top: calc(50% - 160px);
+        left: calc(50% - 160px);
+
+        height: 320px;
+        width: 320px;
+
+        background-image: $gradient;
+        border-radius: 50%;
+
+        z-index: -1;
+
+        transition: opacity $simple-fade, transform $simple-fade;
+
+        @media (min-width: $md) {
+          height: 100%;
+          width: auto;
+          aspect-ratio: 1 / 1;
+          left: 0;
+          top: 0;
+        }
+      }
+
+      &::before {
+        background-image: $gradient;
+      }
+
+      &::after {
+        background-image: url('/images/noise.png');
+        background-size: 300px 300px;
+        mix-blend-mode: overlay;
+      }
+
+
+      &:hover {
+        &::before, &::after {
+          @media (min-width: $md) {
+            transform: scale(1.1);
+          }
+        }
+      }
+  }
+
+  &__meta {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    row-gap: spacing(2.5);
+
+    @media (min-width: $md) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__column {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    row-gap: spacing(2);
+    
+    @media (min-width: $md) {
+      flex-direction: column;
+    }
+  }
+
+  &__text {
+    margin-top: spacing(2.5);
+
+    @extend %body-1;
+    color: $white-80;
+
+    @extend %markdown;
+  }
+
+  &__link-wrapper {
+    margin-top: spacing(3);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    grid-column: 1 / 9;
+
+    @media (min-width: $lg) {
+      grid-column: 8 / 11;
+
+      #{ $self }.full-page & {
+        grid-column: 9 / 12;
+      }
+    }
+  }
+
+  &__link {
+    min-height: 182px;
+    min-width: 182px;
+    aspect-ratio: 1 / 1;
+    padding: spacing(2);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: spacing(1);
+    
+    background: $white-20;
+
+    box-sizing: border-box;
+    overflow: visible;
+
+    @extend %body-1;
+    color: $white;
+
+    border-radius: 50%;
+    transition: background $simple-fade, color $simple-fade;
+
+    svg {
+      overflow: visible;
+    }
+
+    .icon-arrow-right path {
+      fill: $white;
+
+      transition: fill $simple-fade;
+    }
+
+    &:hover {
+      background: $white;
+      color: $purple;
+
+      svg path {
+        fill: $purple;
+      }
+    }
+
+  }
+
+  &.reverse-columns {
+    #{ $self }__link-wrapper {
+      justify-content: flex-start;
+
+      grid-column: 1 / 5;
+
+      @media (min-width: $md) {
+        grid-column: 2 / 7;
+      }
+
+      @media (min-width: $lg) {
+        grid-column: 3 / 6;
+      }
+    }
+
+    #{ $self }__info {
+      grid-column: 1 / 5;
+
+      @media (min-width: $md) {
+        grid-column: 2 / 7;
+      }
+
+      @media (min-width: $lg) {
+        grid-column: 6 / 11;
+        grid-row: 1;
+      }
+    }
+  }
+}

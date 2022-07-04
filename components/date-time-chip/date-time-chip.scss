@@ -1,0 +1,32 @@
+.datetime-chip {
+  @extend %subtitle-1;
+
+
+  &__time {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: spacing(1)
+    }
+    
+    @media (min-width: $md) {
+      margin-bottom: spacing(1.5)
+    }
+  }
+
+  &__timezone {
+    margin-left: spacing(1);
+
+    font-weight: $medium;
+    font-size: 12px;
+    line-height: 1.6;
+
+    color: $white-80;
+  }
+
+  &__icon {
+    margin-right: spacing(1);
+  }
+}
